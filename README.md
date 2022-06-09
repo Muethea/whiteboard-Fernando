@@ -16,9 +16,10 @@ $ node index.js
 E abra http://localhost:3001 no navegador que voce usa com frequencia, e especifique uma porta fornecida pelo terminal. 
 
 # Caracteristicas
-*Desenhe no quadro branco e todos os outros usuários verão seus desenhos ao vivo.
 
-*Capacidade para cada usuário usar sua ferramenta de desenho separada.
+- Desenhe no quadro branco e todos os outros usuários verão seus desenhos ao vivo.
+
+- Capacidade para cada usuário usar sua ferramenta de desenho separada.
 Escolha cores, fontes, fontsizes e pensamento.
  
  Agradecimentos e creditos devansvd e para [Socket.IO](https://socket.io/)
