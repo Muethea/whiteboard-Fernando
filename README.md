@@ -25,8 +25,7 @@ Escolha cores, fontes, fontsizes e pensamento.
 # Tecnologias utilizadas
 ## Back end
 - Javascript
-- yaml
-- jquery
+
 ## Front end
 - HTML / CSS / JS /bootstrap
 
