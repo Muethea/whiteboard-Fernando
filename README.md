@@ -22,7 +22,7 @@ E abra http://localhost:3001 no navegador que voce usa com frequencia, e especif
 - Capacidade para cada usuário usar sua ferramenta de desenho separada.
 Escolha cores, fontes, fontsizes e pensamento.
  
- Agradecimentos e creditos devansvd e para [Socket.IO](https://socket.io/)
+ Agradecimentos e creditos [devansvd](https://github.com/devansvd/) e para [Socket.IO](https://socket.io/)
 # Tecnologias utilizadas
 ## Back end
 - Javascript
