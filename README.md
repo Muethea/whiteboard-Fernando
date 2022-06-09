@@ -1,4 +1,4 @@
-# whiteboard
+# Whiteboard
 
 [![NPM](https://img.shields.io/npm/l/react)](https://github.com/Muethea/whiteboard-Fernando/new/main) 
 
