@@ -1,6 +1,6 @@
 # whiteboard
 
-[![NPM](https://img.shields.io/npm/l/react)](https://github.com/Muethea/Origex/blob/main/LICENSE) 
+[![NPM](https://img.shields.io/npm/l/react)](https://github.com/Muethea/whiteboard-Fernando/new/main) 
 
 # Sobre o projeto
 Um quadro colaborativo simples usando socketIO com ferramentas de desenho que permite que vários usuários desenhem ao mesmo tempo. Abrir links em duas abas separadas em seu navegador ou Abrir link em outro computador tente desenhar simultaneamente em ambos.
