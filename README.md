@@ -9,6 +9,8 @@ veja o whiteboard-https://whitebordd.herokuapp.com/
 
 # Como usar
 $ npm i ou npm install
+
+
 $ node index.js
 
 E abra http://localhost:3001 no navegador que voce usa com frequencia, e especifique uma porta fornecida pelo terminal. 
