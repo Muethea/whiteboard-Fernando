@@ -9,11 +9,15 @@
   ],
   "dependencies": {
     "express": "4.9.x",
+    "file-saver": "^2.0.5",
     "socket.io": "latest"
   },
   "scripts": {
     "start": "node index.js"
   },
   "author": "Devan",
-  "license": "MIT"
+  "license": "MIT",
+  "devDependencies": {
+    "@types/file-saver": "^2.0.5"
+  }
 }

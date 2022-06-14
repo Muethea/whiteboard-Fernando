@@ -1,238 +1,380 @@
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="utf-8">
-		<title>White Board</title>
-        <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="A Collabrative White board">
-    <meta name="author" content="devan">
-		  <style type="text/css">
-      
-      
-      
-      #container { position: relative; }
-      #container{
+  <head>
+    <meta charset="utf-8" />
+    <title>White Board</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A Collabrative White board" />
+    <meta name="author" content="Fernando" />
+    <style type="text/css">
+      #container {
+        position: relative;
+      }
+      #container {
         width: 1200px;
-            height: 750px;
-            background-color: #fff;
-            border-radius: 5px;
+        height: 750px;
+        background-color: #fff;
+        border-radius: 5px;
       }
-      body{
-        background: rgb(55,55,55) !important;
+      body {
+        background: rgb(55, 55, 55) !important;
       }
-      #imageView { border: 1px solid #000; }
-      #imageTemp { position: absolute; top: 1px; left: 1px; }
+      #imageView {
+        border: 1px solid #000;
+      }
+      #imageTemp {
+        position: absolute;
+        top: 1px;
+        left: 1px;
+      }
       canvas {
         border-radius: 5px;
-        cursor:crosshair;
-    }
-    #text_tool {
-    position: absolute;
-    border: 1px dashed black;
-    outline: 0;
-    z-index:1000 !important;
-    display: none;
-    overflow: hidden;
-    white-space: nowrap;
-}
-.container .btn.btn-sm{
-    background: rgb(24, 29, 37);
-    box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.5);
-    color: #fff;
-    outline: none;
-    cursor: pointer;
-    text-shadow: 0 1px #06f;
-    display: inline-block;
-    font-size: 16px;
-    border: none;
-    border-radius: 5px;
-    padding: 5px 15px;
-    margin-right: 5px;
-}
-.container .btn.btn-sm:active{
-   background: #06f; 
-}
-label{
-    color: #fff;
-}
+        cursor: crosshair;
+      }
+      #text_tool {
+        position: absolute;
+        border: 1px dashed black;
+        outline: 0;
+        z-index: 1000 !important;
+        display: none;
+        overflow: hidden;
+        white-space: nowrap;
+      }
+      .container .btn.btn-sm {
+        background: rgb(24, 29, 37);
+        box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.5);
+        color: #fff;
+        outline: none;
+        cursor: pointer;
+        text-shadow: 0 1px #06f;
+        display: inline-block;
+        font-size: 16px;
+        border: none;
+        border-radius: 5px;
+        padding: 5px 15px;
+        margin-right: 5px;
+      }
+      .container .btn.btn-sm:active {
+        background: #06f;
+      }
+      label {
+        color: #fff;
+      }
 
+      h1 {
+        color: #fff;
+      }
 
-h1 {
-            color: #fff;
-        }
-        
-        .headerContainer {
-            background: #262626;
-            height: 10rem;
-            filter: drop-shadow(0px 6px 8px rgba(10, 7, 7, 0.25));
-        }
-        
-        .haeder {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
-        
-        #backgroundWhid {
-            width: 150rem;
-            margin: 0 auto;
-        }
-        
-        .haeder h1 {
-            font-family: 'DM Sans', sans-serif;
-            color: #fff;
-        }
-        
-        .logo-name {
-            align-items: center;
-            display: flex;
-        }
-        
-        .logo-name img {
-            width: 8rem;
-            height: 8rem;
-        }
-        
-        .logo {
-            color: red;
-        }
-        
-        .nameUser-logout {
-            display: flex;
-            align-items: center;
-        }
-        
-        .nameUser-logout button {
-            background: none;
-            border: none;
-        }
-        
-        .nameUser-logout svg {
-            margin-top: 12px;
-            margin-left: 12px;
-        }
-        
-        .nameUser-logout h1 {
-            font-family: 'DM Sans', sans-serif;
-            font-weight: 300;
-            font-size: 24px;
-            color: white;
-        }
+      .headerContainer {
+        background: #262626;
+        height: 10rem;
+        filter: drop-shadow(0px 6px 8px rgba(10, 7, 7, 0.25));
+      }
+
+      .haeder {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+
+      #backgroundWhid {
+        width: 150rem;
+        margin: 0 auto;
+      }
+
+      .haeder h1 {
+        font-family: 'DM Sans', sans-serif;
+        color: #fff;
+      }
+
+      .logo-name {
+        align-items: center;
+        display: flex;
+      }
+
+      .logo-name img {
+        width: 8rem;
+        height: 8rem;
+      }
+
+      .logo {
+        color: red;
+      }
+
+      .nameUser-logout {
+        display: flex;
+        align-items: center;
+      }
+
+      .nameUser-logout button {
+        background: none;
+        border: none;
+      }
+
+      .nameUser-logout svg {
+        margin-top: 12px;
+        margin-left: 12px;
+      }
+
+      .nameUser-logout h1 {
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 300;
+        font-size: 24px;
+        color: white;
+      }
     </style>
     <!-- Bootstrap -->
-    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
-    
-	</head>
-    
-	<body>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+  </head>
+
+  <body>
     <header class="headerContainer">
       <nav class="haeder" , id="backgroundWhid">
-          <div class="logo-name">
-              <img src="./img/color-palette.png" alt="">
-              <h1><span class="logo">White</span>Board</h1>
-          </div>
-          <div class="nameUser-logout">
-              <h1>User name</h1>
-              <button>
-                <a href="">
-<svg width="17" height="18" viewBox="0 0 17 18" fill="none" xmlns="http://www.w3.org/2000/svg">
-<path d="M14.1393 7.06771V1H1.42621V17.5H14.1393V11.0082" stroke="white"/>
-<path d="M10.9998 8.86957C10.8617 8.86969 10.7499 8.98172 10.75 9.11979C10.7501 9.25786 10.8622 9.36969 11.0002 9.36957L10.9998 8.86957ZM16.5868 9.29138C16.6843 9.19366 16.6842 9.03537 16.5865 8.93782L14.994 7.34825C14.8963 7.2507 14.738 7.25085 14.6405 7.34856C14.543 7.44628 14.5431 7.60457 14.6408 7.70212L16.0563 9.11507L14.6433 10.5305C14.5458 10.6283 14.5459 10.7866 14.6436 10.8841C14.7414 10.9816 14.8996 10.9815 14.9972 10.8838L16.5868 9.29138ZM11.0002 9.36957L16.4101 9.36476L16.4096 8.86476L10.9998 8.86957L11.0002 9.36957Z" fill="white"/>
-</svg>
-                </a>
-            </button>
-          </div>
-
-
+        <div class="logo-name">
+          <img src="./img/color-palette.png" alt="" />
+          <h1><span class="logo">White</span>Board</h1>
+        </div>
+        <div class="nameUser-logout">
+          <h1>User name</h1>
+          <button>
+            <a href="">
+              <svg
+                width="17"
+                height="18"
+                viewBox="0 0 17 18"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M14.1393 7.06771V1H1.42621V17.5H14.1393V11.0082"
+                  stroke="white"
+                />
+                <path
+                  d="M10.9998 8.86957C10.8617 8.86969 10.7499 8.98172 10.75 9.11979C10.7501 9.25786 10.8622 9.36969 11.0002 9.36957L10.9998 8.86957ZM16.5868 9.29138C16.6843 9.19366 16.6842 9.03537 16.5865 8.93782L14.994 7.34825C14.8963 7.2507 14.738 7.25085 14.6405 7.34856C14.543 7.44628 14.5431 7.60457 14.6408 7.70212L16.0563 9.11507L14.6433 10.5305C14.5458 10.6283 14.5459 10.7866 14.6436 10.8841C14.7414 10.9816 14.8996 10.9815 14.9972 10.8838L16.5868 9.29138ZM11.0002 9.36957L16.4101 9.36476L16.4096 8.86476L10.9998 8.86957L11.0002 9.36957Z"
+                  fill="white"
+                />
+              </svg>
+            </a>
+          </button>
+        </div>
       </nav>
-  </header>
+    </header>
     <div class="container">
-
       <div id="container">
-          <canvas id="imageView" width="1200" height="750">
-   
-      </canvas>
+        <canvas id="imageView" width="1200" height="750"> </canvas>
       </div>
- 
-        <p style="">
-          <button type="button" class="btn btn-warning btn-sm" value="pencil" id="pencil-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-pencil-fill" viewBox="0 0 16 16">
-      <path d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"/>
-    </svg>
-            </button>
-            <button type="button" class="btn btn-warning btn-sm" value="rect" id="rect-button">
-            <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-app" viewBox="0 0 16 16">
-      <path d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"/>
-    </svg>
-            </button>
-            <button type="button" class="btn btn-warning btn-sm" value="circle" id="circle-button">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-circle" viewBox="0 0 16 16">
-      <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
-    </svg>
-            </button>
-            <button type="button" class="btn btn-warning btn-sm" value="ellipse" id="ellipse-button">
-              <svg width="49" height="36" viewBox="0 0 49 36" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <path d="M47.5 18C47.5 22.3791 45.0872 26.4692 40.936 29.5191C36.7856 32.5684 30.9794 34.5 24.5 34.5C18.0206 34.5 12.2144 32.5684 8.064 29.5191C3.91279 26.4692 1.5 22.3791 1.5 18C1.5 13.6209 3.91279 9.53077 8.064 6.4809C12.2144 3.4316 18.0206 1.5 24.5 1.5C30.9794 1.5 36.7856 3.4316 40.936 6.4809C45.0872 9.53077 47.5 13.6209 47.5 18Z" stroke="white" stroke-width="3"/>
-    </svg>
-    
-            </button>
-            <button type="button" class="btn btn-warning btn-sm" value="line" id="line-button">
-              <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <line x1="2" y1="34.8787" x2="34.8787" y2="2" stroke="white" stroke-width="3" stroke-linecap="round"/>
-    </svg>
-    
-            </button>
-            <button type="button" class="btn btn-warning btn-sm" value="text" id="text-button">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-fonts" viewBox="0 0 16 16">
-      <path d="M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479L12.258 3z"/>
-    </svg>
-            </button>
-            <button type="button" class="btn btn-warning btn-sm" id="clear-all">
-             <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-stars" viewBox="0 0 16 16">
-      <path d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"/>
-    </svg>
-            </button>
-    
-            <button type="button" class="btn btn-warning btn-sm" value="Save" onclick="savalvar()" id="save">
-              <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-save" viewBox="0 0 16 16">
-      <path d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"/>
-    </svg>
-          
-            </button>
-    
-            <button type="button" class="btn btn-warning btn-sm" id="Share" class="button" data-sharer="whatsapp" data-title="Checkout Sharer.js!" data-url="https://whiteboar.herokuapp.com/">
-          <svg xmlns="http://www.w3.org/2000/svg" width="36" height="36" fill="currentColor" class="bi bi-share" viewBox="0 0 16 16">
-      <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
-    </svg>
-            </button>
-            </button>
-        <label for="colour" style="position:absolute;">Colour : </label>
-        <input id="colour-picker" value="#000000" style="width:80px;" class="jscolor {width:243, height:150, position:'right',
-    borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}">
-    <span class="form-group" style="width: 90px; display: inline-block">
-      <label for="line-Width">Thickness: </label>
-      <select class="form-control" id="line-Width">
-        <option>2</option>
-        <option>4</option>
-        <option>6</option>
-        <option>8</option>
-        <option>10</option>
-        <option>12</option>
-        <option>14</option>
-      </select>
-    </span>
-    <span class="form-group" style="width: 130px; display: inline-block">
-      <label for="draw-text-font-family">Font: </label>
-      <select class="form-control" id="draw-text-font-family">
-        <option value="Arial">Arial</option>
-        <option value="Verdana">Verdana</option>
-        <option value="Times New Roman" selected>Times New Roman</option>
-        <option value="Courier New">Courier New</option>
-        <option value="serif">serif</option>
-        <option value="sans-serif">sans-serif</option>
-      </select>
-    </span>
+
+      <p>
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          value="pencil"
+          id="pencil-button"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            fill="currentColor"
+            class="bi bi-pencil-fill"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M12.854.146a.5.5 0 0 0-.707 0L10.5 1.793 14.207 5.5l1.647-1.646a.5.5 0 0 0 0-.708l-3-3zm.646 6.061L9.793 2.5 3.293 9H3.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.5h.5a.5.5 0 0 1 .5.5v.207l6.5-6.5zm-7.468 7.468A.5.5 0 0 1 6 13.5V13h-.5a.5.5 0 0 1-.5-.5V12h-.5a.5.5 0 0 1-.5-.5V11h-.5a.5.5 0 0 1-.5-.5V10h-.5a.499.499 0 0 1-.175-.032l-.179.178a.5.5 0 0 0-.11.168l-2 5a.5.5 0 0 0 .65.65l5-2a.5.5 0 0 0 .168-.11l.178-.178z"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          value="rect"
+          id="rect-button"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            fill="currentColor"
+            class="bi bi-app"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M11 2a3 3 0 0 1 3 3v6a3 3 0 0 1-3 3H5a3 3 0 0 1-3-3V5a3 3 0 0 1 3-3h6zM5 1a4 4 0 0 0-4 4v6a4 4 0 0 0 4 4h6a4 4 0 0 0 4-4V5a4 4 0 0 0-4-4H5z"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          value="circle"
+          id="circle-button"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            fill="currentColor"
+            class="bi bi-circle"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          value="ellipse"
+          id="ellipse-button"
+        >
+          <svg
+            width="49"
+            height="36"
+            viewBox="0 0 49 36"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M47.5 18C47.5 22.3791 45.0872 26.4692 40.936 29.5191C36.7856 32.5684 30.9794 34.5 24.5 34.5C18.0206 34.5 12.2144 32.5684 8.064 29.5191C3.91279 26.4692 1.5 22.3791 1.5 18C1.5 13.6209 3.91279 9.53077 8.064 6.4809C12.2144 3.4316 18.0206 1.5 24.5 1.5C30.9794 1.5 36.7856 3.4316 40.936 6.4809C45.0872 9.53077 47.5 13.6209 47.5 18Z"
+              stroke="white"
+              stroke-width="3"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          value="line"
+          id="line-button"
+        >
+          <svg
+            width="37"
+            height="37"
+            viewBox="0 0 37 37"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <line
+              x1="2"
+              y1="34.8787"
+              x2="34.8787"
+              y2="2"
+              stroke="white"
+              stroke-width="3"
+              stroke-linecap="round"
+            />
+          </svg>
+        </button>
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          value="text"
+          id="text-button"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            fill="currentColor"
+            class="bi bi-fonts"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M12.258 3h-8.51l-.083 2.46h.479c.26-1.544.758-1.783 2.693-1.845l.424-.013v7.827c0 .663-.144.82-1.3.923v.52h4.082v-.52c-1.162-.103-1.306-.26-1.306-.923V3.602l.431.013c1.934.062 2.434.301 2.693 1.846h.479L12.258 3z"
+            />
+          </svg>
+        </button>
+        <button type="button" class="btn btn-warning btn-sm" id="clear-all">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            fill="currentColor"
+            class="bi bi-stars"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M7.657 6.247c.11-.33.576-.33.686 0l.645 1.937a2.89 2.89 0 0 0 1.829 1.828l1.936.645c.33.11.33.576 0 .686l-1.937.645a2.89 2.89 0 0 0-1.828 1.829l-.645 1.936a.361.361 0 0 1-.686 0l-.645-1.937a2.89 2.89 0 0 0-1.828-1.828l-1.937-.645a.361.361 0 0 1 0-.686l1.937-.645a2.89 2.89 0 0 0 1.828-1.828l.645-1.937zM3.794 1.148a.217.217 0 0 1 .412 0l.387 1.162c.173.518.579.924 1.097 1.097l1.162.387a.217.217 0 0 1 0 .412l-1.162.387A1.734 1.734 0 0 0 4.593 5.69l-.387 1.162a.217.217 0 0 1-.412 0L3.407 5.69A1.734 1.734 0 0 0 2.31 4.593l-1.162-.387a.217.217 0 0 1 0-.412l1.162-.387A1.734 1.734 0 0 0 3.407 2.31l.387-1.162zM10.863.099a.145.145 0 0 1 .274 0l.258.774c.115.346.386.617.732.732l.774.258a.145.145 0 0 1 0 .274l-.774.258a1.156 1.156 0 0 0-.732.732l-.258.774a.145.145 0 0 1-.274 0l-.258-.774a1.156 1.156 0 0 0-.732-.732L9.1 2.137a.145.145 0 0 1 0-.274l.774-.258c.346-.115.617-.386.732-.732L10.863.1z"
+            />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          value="Save"
+          onclick="salvar()"
+          id="save"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="46"
+            height="36"
+            fill="currentColor"
+            class="bi bi-save"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M2 1a1 1 0 0 0-1 1v12a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H9.5a1 1 0 0 0-1 1v7.293l2.646-2.647a.5.5 0 0 1 .708.708l-3.5 3.5a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L7.5 9.293V2a2 2 0 0 1 2-2H14a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2a2 2 0 0 1 2-2h2.5a.5.5 0 0 1 0 1H2z"
+            />
+          </svg>
+        </button>
+
+        <button
+          type="button"
+          class="btn btn-warning btn-sm"
+          id="Share"
+          class="button"
+          data-sharer="whatsapp"
+          data-title="Checkout Sharer.js!"
+          data-url="https://whiteboar.herokuapp.com/"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            width="36"
+            height="36"
+            fill="currentColor"
+            class="bi bi-share"
+            viewBox="0 0 16 16"
+          >
+            <path
+              d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zM11 2.5a2.5 2.5 0 1 1 .603 1.628l-6.718 3.12a2.499 2.499 0 0 1 0 1.504l6.718 3.12a2.5 2.5 0 1 1-.488.876l-6.718-3.12a2.5 2.5 0 1 1 0-3.256l6.718-3.12A2.5 2.5 0 0 1 11 2.5zm-8.5 4a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3zm11 5.5a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"
+            />
+          </svg>
+        </button>
+
+        <label for="colour" style="position: absolute">Colour : </label>
+        <input
+          id="colour-picker"
+          value="#000000"
+          style="width: 80px"
+          class="jscolor {width:243, height:150, position:'right', borderColor:'#FFF', insetColor:'#FFF', backgroundColor:'#666'}"
+        />
+        <span class="form-group" style="width: 90px; display: inline-block">
+          <label for="line-Width">Thickness: </label>
+          <select class="form-control" id="line-Width">
+            <option>2</option>
+            <option>4</option>
+            <option>6</option>
+            <option>8</option>
+            <option>10</option>
+            <option>12</option>
+            <option>14</option>
+          </select>
+        </span>
+        <span class="form-group" style="width: 130px; display: inline-block">
+          <label for="draw-text-font-family">Font: </label>
+          <select class="form-control" id="draw-text-font-family">
+            <option value="Arial">Arial</option>
+            <option value="Verdana">Verdana</option>
+            <option value="Times New Roman" selected>Times New Roman</option>
+            <option value="Courier New">Courier New</option>
+            <option value="serif">serif</option>
+            <option value="sans-serif">sans-serif</option>
+          </select>
+        </span>
         <span class="form-group" style="width: 90px; display: inline-block">
           <label for="draw-text-font-size">Font Size: </label>
           <select class="form-control" id="draw-text-font-size">
@@ -244,32 +386,38 @@ h1 {
             <option value="26">26 Px</option>
             <option value="28">28 Px</option>
             <option value="30">30 Px</option>
-            <option value="32" >32 Px</option>
+            <option value="32">32 Px</option>
             <option value="34">34 Px</option>
             <option value="36">36 Px</option>
             <option value="38">38 Px</option>
             <option value="40">40 Px</option>
           </select>
         </span>
-        </p>
-
-      
+      </p>
     </div>
-    
-<!-- Script files -->
-        <script src='jquery.min.js'></script>
-        <script src="bootstrap/js/bootstrap.min.js"></script>
-        <script src="jscolor/jscolor.min.js"></script>
-        <script src="/socket.io/socket.io.js"></script>
-		 <script src="canvas.js"></script> 
-		<!-- <script src="canvas-backup-latest-v1.js"></script> -->
 
-     <script type="text/javascript">
-      $(document).ready(function(){
-          var board_url = window.location.href;
-          $('.linkToBoard').attr("href",board_url);
-      });
+    <!-- Script files -->
+    <script src="jquery.min.js"></script>
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+    <script src="jscolor/jscolor.min.js"></script>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="canvas.js"></script>
+    <!-- <script src="canvas-backup-latest-v1.js"></script> -->
+
+    <script type="text/javascript">
+      $(document).ready(function () {
+        var board_url = window.location.href
+        $('.linkToBoard').attr('href', board_url)
+      })
     </script>
-
-	</body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/1.3.8/FileSaver.min.js"></script>
+    <script>
+      function salvar() {
+        var canvas = document.getElementById('imageView')
+        canvas.toBlob(function (blob) {
+          saveAs(blob, 'image.png')
+        })
+      }
+    </script>
+  </body>
 </html>
