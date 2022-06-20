@@ -18,7 +18,7 @@
         border-radius: 5px;
       }
       body {
-        background: rgb(55, 55, 55) !important;
+        background: hsl(0, 1%, 17%) !important;
       }
       #imageView {
         border: 1px solid #000;
@@ -123,6 +123,13 @@
         font-size: 24px;
         color: white;
       }
+      #authorize_button,
+      #signout_button {
+        width: 10rem;
+        height: 3rem;
+        border-radius: 0.5rem;
+        background: white;
+      }
     </style>
     <!-- Bootstrap -->
     <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
@@ -130,164 +137,10 @@
 
   <body>
     <!---GOOGLE DRIVE-->
-    <p style="color: white">Drive API Quickstart</p>
+    <p>Drive API Quickstart</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button
-      style="background: red"
-      id="authorize_button"
-      onclick="handleAuthClick()"
-    >
-      Authorize
-    </button>
-    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
-    <pre id="content" style="white-space: pre-wrap"></pre>
-
-    <script type="text/javascript">
-      /* exported gapiLoaded */
-      /* exported gisLoaded */
-      /* exported handleAuthClick */
-      /* exported handleSignoutClick */
-
-      // TODO(developer): Set to client ID and API key from the Developer Console
-      const CLIENT_ID = '<YOUR_CLIENT_ID>'
-      const API_KEY = '<YOUR_API_KEY>'
-
-      // Discovery doc URL for APIs used by the quickstart
-      const DISCOVERY_DOC =
-        'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
-
-      // Authorization scopes required by the API; multiple scopes can be
-      // included, separated by spaces.
-      const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
-
-      let tokenClient
-      let gapiInited = false
-      let gisInited = false
-
-      document.getElementById('authorize_button').style.visibility = 'hidden'
-      document.getElementById('signout_button').style.visibility = 'hidden'
-
-      /**
-       * Callback after api.js is loaded.
-       */
-      function gapiLoaded() {
-        gapi.load('client', intializeGapiClient)
-      }
-
-      /**
-       * Callback after the API client is loaded. Loads the
-       * discovery doc to initialize the API.
-       */
-      async function intializeGapiClient() {
-        await gapi.client.init({
-          apiKey: API_KEY,
-          discoveryDocs: [DISCOVERY_DOC]
-        })
-        gapiInited = true
-        maybeEnableButtons()
-      }
-
-      /**
-       * Callback after Google Identity Services are loaded.
-       */
-      function gisLoaded() {
-        tokenClient = google.accounts.oauth2.initTokenClient({
-          client_id: CLIENT_ID,
-          scope: SCOPES,
-          callback: '' // defined later
-        })
-        gisInited = true
-        maybeEnableButtons()
-      }
-
-      /**
-       * Enables user interaction after all libraries are loaded.
-       */
-      function maybeEnableButtons() {
-        if (gapiInited && gisInited) {
-          document.getElementById('authorize_button').style.visibility =
-            'visible'
-        }
-      }
-
-      /**
-       *  Sign in the user upon button click.
-       */
-      function handleAuthClick() {
-        tokenClient.callback = async resp => {
-          if (resp.error !== undefined) {
-            throw resp
-          }
-          document.getElementById('signout_button').style.visibility = 'visible'
-          document.getElementById('authorize_button').innerText = 'Refresh'
-          await listFiles()
-        }
-
-        if (gapi.client.getToken() === null) {
-          // Prompt the user to select a Google Account and ask for consent to share their data
-          // when establishing a new session.
-          tokenClient.requestAccessToken({ prompt: 'consent' })
-        } else {
-          // Skip display of account chooser and consent dialog for an existing session.
-          tokenClient.requestAccessToken({ prompt: '' })
-        }
-      }
-
-      /**
-       *  Sign out the user upon button click.
-       */
-      function handleSignoutClick() {
-        const token = gapi.client.getToken()
-        if (token !== null) {
-          google.accounts.oauth2.revoke(token.access_token)
-          gapi.client.setToken('')
-          document.getElementById('content').innerText = ''
-          document.getElementById('authorize_button').innerText = 'Authorize'
-          document.getElementById('signout_button').style.visibility = 'hidden'
-        }
-      }
-
-      /**
-       * Print metadata for first 10 files.
-       */
-      async function listFiles() {
-        let response
-        try {
-          response = await gapi.client.drive.files.list({
-            pageSize: 10,
-            fields: 'files(id, name)'
-          })
-        } catch (err) {
-          document.getElementById('content').innerText = err.message
-          return
-        }
-        const files = response.result.files
-        if (!files || files.length == 0) {
-          document.getElementById('content').innerText = 'No files found.'
-          return
-        }
-        // Flatten to string to display
-        const output = files.reduce(
-          (str, file) => `${str}${file.name} (${file.id}\n`,
-          'Files:\n'
-        )
-        document.getElementById('content').innerText = output
-      }
-    </script>
-    <script
-      async
-      defer
-      src="https://apis.google.com/js/api.js"
-      onload="gapiLoaded()"
-    ></script>
-    <script
-      async
-      defer
-      src="https://accounts.google.com/gsi/client"
-      onload="gisLoaded()"
-    ></script>
     <header class="headerContainer">
       <nav class="haeder" , id="backgroundWhid">
         <div class="logo-name">
@@ -295,30 +148,16 @@
           <h1><span class="logo">White</span>Board</h1>
         </div>
         <div class="nameUser-logout">
-          <h1>User name</h1>
-          <button>
-            <a href="">
-              <svg
-                width="17"
-                height="18"
-                viewBox="0 0 17 18"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <path
-                  d="M14.1393 7.06771V1H1.42621V17.5H14.1393V11.0082"
-                  stroke="white"
-                />
-                <path
-                  d="M10.9998 8.86957C10.8617 8.86969 10.7499 8.98172 10.75 9.11979C10.7501 9.25786 10.8622 9.36969 11.0002 9.36957L10.9998 8.86957ZM16.5868 9.29138C16.6843 9.19366 16.6842 9.03537 16.5865 8.93782L14.994 7.34825C14.8963 7.2507 14.738 7.25085 14.6405 7.34856C14.543 7.44628 14.5431 7.60457 14.6408 7.70212L16.0563 9.11507L14.6433 10.5305C14.5458 10.6283 14.5459 10.7866 14.6436 10.8841C14.7414 10.9816 14.8996 10.9815 14.9972 10.8838L16.5868 9.29138ZM11.0002 9.36957L16.4101 9.36476L16.4096 8.86476L10.9998 8.86957L11.0002 9.36957Z"
-                  fill="white"
-                />
-              </svg>
-            </a>
+          <button id="authorize_button" onclick="handleAuthClick()">
+            Entrar
+          </button>
+          <button id="signout_button" onclick="handleSignoutClick()">
+            Sair
           </button>
         </div>
       </nav>
     </header>
+
     <div class="container">
       <div id="container">
         <canvas id="imageView" width="1200" height="750"> </canvas>
@@ -554,21 +393,138 @@
         </span>
       </p>
     </div>
-
     <!----Sign Email----->
 
-    <script
-      type="text/javascript"
-      src="https://apis.google.com/js/api.js"
-    ></script>
     <script type="text/javascript">
-      init = function () {
-        s = new gapi.drive.share.ShareClient()
-        s.setOAuthToken('<OAUTH_TOKEN>')
-        s.setItemIds(['<FILE_ID>'])
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const CLIENT_ID =
+        '    829318970461-8ksp425p0n9ck7b29btdsuvb9s58tqv1.apps.googleusercontent.com'
+      const API_KEY = 'AIzaSyClp_Y_fMx-1jF25GGHVE_lGMBoD68Za9A'
+
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC =
+        'https://www.googleapis.com/discovery/v1/apis/drive/v3/rest'
+
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES = 'https://www.googleapis.com/auth/drive.metadata.readonly'
+
+      let tokenClient
+      let gapiInited = false
+      let gisInited = false
+
+      document.getElementById('authorize_button').style.visibility = 'hidden'
+      document.getElementById('signout_button').style.visibility = 'hidden'
+
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoaded() {
+        gapi.load('client', intializeGapiClient)
       }
-      window.onload = function () {
-        gapi.load('drive-share', init)
+
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function intializeGapiClient() {
+        await gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: [DISCOVERY_DOC]
+        })
+        gapiInited = true
+        maybeEnableButtons()
+      }
+
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoaded() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CLIENT_ID,
+          scope: SCOPES,
+          callback: '' // defined later
+        })
+        gisInited = true
+        maybeEnableButtons()
+      }
+
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtons() {
+        if (gapiInited && gisInited) {
+          document.getElementById('authorize_button').style.visibility =
+            'visible'
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick() {
+        tokenClient.callback = async resp => {
+          if (resp.error !== undefined) {
+            throw resp
+          }
+          document.getElementById('signout_button').style.visibility = 'visible'
+          document.getElementById('authorize_button').innerText = 'Refresh'
+          await listFiles()
+        }
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClient.requestAccessToken({ prompt: 'consent' })
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClient.requestAccessToken({ prompt: '' })
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick() {
+        const token = gapi.client.getToken()
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token)
+          gapi.client.setToken('')
+          document.getElementById('content').innerText = ''
+          document.getElementById('authorize_button').innerText = 'Authorize'
+          document.getElementById('signout_button').style.visibility = 'hidden'
+        }
+      }
+
+      /**
+       * Print metadata for first 10 files.
+       */
+      async function listFiles() {
+        let response
+        try {
+          response = await gapi.client.drive.files.list({
+            pageSize: 10,
+            fields: 'files(id, name)'
+          })
+        } catch (err) {
+          document.getElementById('content').innerText = err.message
+          return
+        }
+        const files = response.result.files
+        if (!files || files.length == 0) {
+          document.getElementById('content').innerText = 'No files found.'
+          return
+        }
+        // Flatten to string to display
+        const output = files.reduce(
+          (str, file) => `${str}${file.name} (${file.id}\n`,
+          'Files:\n'
+        )
+        document.getElementById('content').innerText = output
       }
     </script>
 
@@ -595,5 +551,17 @@
         })
       }
     </script>
+    <script
+      async
+      defer
+      src="https://apis.google.com/js/api.js"
+      onload="gapiLoaded()"
+    ></script>
+    <script
+      async
+      defer
+      src="https://accounts.google.com/gsi/client"
+      onload="gisLoaded()"
+    ></script>
   </body>
 </html>
