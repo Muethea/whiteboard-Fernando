@@ -396,6 +396,23 @@
       </p>
     </div>
 
+    <!----Sign Email----->
+
+    <script
+      type="text/javascript"
+      src="https://apis.google.com/js/api.js"
+    ></script>
+    <script type="text/javascript">
+      init = function () {
+        s = new gapi.drive.share.ShareClient()
+        s.setOAuthToken('<OAUTH_TOKEN>')
+        s.setItemIds(['<FILE_ID>'])
+      }
+      window.onload = function () {
+        gapi.load('drive-share', init)
+      }
+    </script>
+
     <!-- Script files -->
     <script src="jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
