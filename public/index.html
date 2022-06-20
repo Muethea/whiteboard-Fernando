@@ -130,10 +130,16 @@
 
   <body>
     <!---GOOGLE DRIVE-->
-    <p>Drive API Quickstart</p>
+    <p style="color: white">Drive API Quickstart</p>
 
     <!--Add buttons to initiate auth sequence and sign out-->
-    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+    <button
+      style="background: red"
+      id="authorize_button"
+      onclick="handleAuthClick()"
+    >
+      Authorize
+    </button>
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
     <pre id="content" style="white-space: pre-wrap"></pre>
