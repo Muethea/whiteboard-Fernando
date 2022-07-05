@@ -6,7 +6,7 @@ $(document).ready(function () {
 
   // redirect_uri of the project
 
-  var redirect_uri = 'http://localhost/'
+  var redirect_uri = 'https://whiteboar.herokuapp.com'
 
   // scope of the project
 
